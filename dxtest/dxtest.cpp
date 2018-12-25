@@ -1,3 +1,4 @@
+//zyouhouzikken
 #include <DxLib.h>
 #include <math.h>
 #define PI 3.1415926f
@@ -5,11 +6,11 @@ const float G = 9.8f;
 class Fps {
 
 public:
-	int mStartTime;         //‘ª’èŠJn
-	int mCount;             //ƒJƒEƒ“ƒ^
+	int mStartTime;         //æ¸¬å®šé–‹å§‹æ™‚åˆ»
+	int mCount;             //ã‚«ã‚¦ãƒ³ã‚¿
 	float mFps;             //fps
-	static const int N = 60;//•½‹Ï‚ğæ‚éƒTƒ“ƒvƒ‹”
-	static const int FPS = 60;	//İ’è‚µ‚½FPS
+	static const int N = 60;//å¹³å‡ã‚’å–ã‚‹ã‚µãƒ³ãƒ—ãƒ«æ•°
+	static const int FPS = 60;	//è¨­å®šã—ãŸFPS
 
 
 	Fps() {
@@ -19,10 +20,10 @@ public:
 	}
 
 	bool Update() {
-		if (mCount == 0) { //1ƒtƒŒ[ƒ€–Ú‚È‚ç‚ğ‹L‰¯
+		if (mCount == 0) { //1ãƒ•ãƒ¬ãƒ¼ãƒ ç›®ãªã‚‰æ™‚åˆ»ã‚’è¨˜æ†¶
 			mStartTime = GetNowCount();
 		}
-		if (mCount == N) { //60ƒtƒŒ[ƒ€–Ú‚È‚ç•½‹Ï‚ğŒvZ‚·‚é
+		if (mCount == N) { //60ãƒ•ãƒ¬ãƒ¼ãƒ ç›®ãªã‚‰å¹³å‡ã‚’è¨ˆç®—ã™ã‚‹
 			int t = GetNowCount();
 			mFps = 1000.f / ((t - mStartTime) / (float)N);
 			mCount = 0;
@@ -37,15 +38,15 @@ public:
 	}
 
 	void Wait() {
-		int tookTime = GetNowCount() - mStartTime;	//‚©‚©‚Á‚½ŠÔ
-		int waitTime = mCount * 1000 / FPS - tookTime;	//‘Ò‚Â‚×‚«ŠÔ
+		int tookTime = GetNowCount() - mStartTime;	//ã‹ã‹ã£ãŸæ™‚é–“
+		int waitTime = mCount * 1000 / FPS - tookTime;	//å¾…ã¤ã¹ãæ™‚é–“
 		if (waitTime > 0) {
-			Sleep(waitTime);	//‘Ò‹@
+			Sleep(waitTime);	//å¾…æ©Ÿ
 		}
 	}
 };
 
-static const float ROTATE_SPEED = DX_PI_F / 90;//‰ñ“]ƒXƒs[ƒh
+static const float ROTATE_SPEED = DX_PI_F / 90;//å›è»¢ã‚¹ãƒ”ãƒ¼ãƒ‰
 
 
 
@@ -68,69 +69,69 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		 
 	int  remain=6;
 
-	int sleep = 0;//‚¿‚å‚Á‚Æ‚¾‚¯‘Ò‚Æ‚¤‚©
+	int sleep = 0;//ã¡ã‚‡ã£ã¨ã ã‘å¾…ã¨ã†ã‹
 	float angleX = 0.f, angleY = 0.f;
 
-	float r = 50.0f;//”¼Œa
+	float r = 50.0f;//åŠå¾„
 
-	float tx = -10.0f;//‚±‚±‚ğ•Ï‚¦‚ê‚Îx²‚Ìƒ^[ƒQƒbƒg‚ª•Ï‚í‚é
+	float tx = -10.0f;//ã“ã“ã‚’å¤‰ãˆã‚Œã°xè»¸ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒå¤‰ã‚ã‚‹
 
 	float cx = tx, cy = 0.0f ,cz=r;
 	
 	int thy = 15;
 	int thz = 15;
 	//const char *String=0;
-	//3Dƒ‚ƒfƒ‹‚Ì“Ç‚İ‚İ
+	//3Dãƒ¢ãƒ‡ãƒ«ã®èª­ã¿è¾¼ã¿
 	int Soccerball = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer ball\\Soccer Ball Low.blend.x");
 	int plane = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\plane\\Plane.x");
 	int Soccerfield = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccer field\\Soccer Grount Base high optimised.blend.x");
 	int Soccergoal = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer goal\\goal low optimised.blend.x");
 	int Soccerballx = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer ball\\Soccer Ball Low.blend.x");
-	/*// ƒ‚ƒfƒ‹‚ÉŠÜ‚Ü‚ê‚éƒeƒNƒXƒ`ƒƒ‚Ì‘”‚ğæ“¾‚·‚é
+	/*// ãƒ¢ãƒ‡ãƒ«ã«å«ã¾ã‚Œã‚‹ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ç·æ•°ã‚’å–å¾—ã™ã‚‹
 	Grassllllow = MV1GetTextureNum(Soccerfield);
 
-	// ƒeƒNƒXƒ`ƒƒ‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®æ•°ã ã‘ç¹°ã‚Šè¿”ã—
 	for (i = 0; i < Grassllllow; i++)
 	{
-		// ‰æ–Ê‚ğƒNƒŠƒA‚·‚é
+		// ç”»é¢ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
 		ClearDrawScreen();
 
-		// ƒeƒNƒXƒ`ƒƒ‚ÌƒOƒ‰ƒtƒBƒbƒNƒnƒ“ƒhƒ‹‚ğæ“¾‚·‚é
+		// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã™ã‚‹
 		GrHandle = MV1GetTextureGraphHandle(Soccerfield, i);
 
 		
-		// ƒeƒNƒXƒ`ƒƒ‚Ì‘å‚«‚³‚ğ•`‰æ‚·‚é
+		// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å¤§ãã•ã‚’æç”»ã™ã‚‹
 		GetGraphSize(GrHandle, &Width, &Height);
 		DrawFormatString(0, 1, GetColor(255, 255, 255), "          %dx%d", Width, Height);
 
 		
 	}
-		// ƒeƒNƒXƒ`ƒƒ‚ğ•`‰æ‚·‚é
+		// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’æç”»ã™ã‚‹
 		DrawGraph(0, 1, GrHandle, TRUE);
 		*/
 		
 
-	//ƒTƒbƒJ[ƒS[ƒ‹‚ğ‰ñ“]
+	//ã‚µãƒƒã‚«ãƒ¼ã‚´ãƒ¼ãƒ«ã‚’å›è»¢
 	MV1SetRotationXYZ(Soccergoal,VGet(90.0f* DX_PI_F / 180.0f, 90.0f * DX_PI_F / 180.0f, 0.0f));
 	MV1SetRotationXYZ(Soccerfield, VGet(90.0f* DX_PI_F / 180.0f, 180.0f * DX_PI_F / 180.0f, 0.0f));
 	
-	//ƒTƒbƒJ[‹£‹Zê‚ÌŠg‘å
+	//ã‚µãƒƒã‚«ãƒ¼ç«¶æŠ€å ´ã®æ‹¡å¤§
 	MV1SetScale(Soccerfield, VGet(7.0f, 7.0f, 7.0f));
 	
-	//‰œs0.1`1000‚Ü‚Å‚ğƒJƒƒ‰‚Ì•`‰æ”ÍˆÍ‚Æ‚·‚é
+	//å¥¥è¡Œ0.1ï½1000ã¾ã§ã‚’ã‚«ãƒ¡ãƒ©ã®æç”»ç¯„å›²ã¨ã™ã‚‹
 	SetCameraNearFar(0.01f, 100000.0f);
 
 	/*while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen())
 	{
          
 	}*/
-	//(x,y,z)‚Ì‹“_‚©‚ç(0,10,0)‚Ìƒ^[ƒQƒbƒg‚ğŒ©‚éŠp“x‚ÉƒJƒƒ‰‚ğİ’u
+	//(x,y,z)ã®è¦–ç‚¹ã‹ã‚‰(0,10,0)ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’è¦‹ã‚‹è§’åº¦ã«ã‚«ãƒ¡ãƒ©ã‚’è¨­ç½®
 	SetCameraPositionAndTarget_UpVecY(VGet(cx,cy, cz), VGet(tx, 0.0f, 0.0f));
 	//SetCameraPositionAndTarget_UpVecY(VGet(0, 90, -15), VGet(0.0f, 0.0f, 0.0f));
 	//SetCameraPositionAndTarget_UpVecY(VGet(30, 20, 0), VGet(10.0f, 10.0f, 0.0f));
 	
-	//‚±‚Ì“_‚Åbox=S;
-	DrawFormatString(240, 240, GetColor(255, 255, 255), " XƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢");
+	//ã“ã®ç‚¹ã§box=S;
+	DrawFormatString(240, 240, GetColor(255, 255, 255), " Xã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„");
 	ScreenFlip();
 	while (CheckHitKey(KEY_INPUT_X) != 1)
 	{
@@ -138,33 +139,33 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//s = 'S';
 		
 		//}
-		box = 'S';														//ƒoƒCƒgŒ^‚Å‘—‚é‚à‚Ì
+		box = 'S';														//ãƒã‚¤ãƒˆå‹ã§é€ã‚‹ã‚‚ã®
 	}
-	buffer[0] = box;				//X‰Ÿ‚µ‚½‚çƒ‹[ƒv”²‚¯‚ÄS‚ª“ü‚éB
+	buffer[0] = box;				//XæŠ¼ã—ãŸã‚‰ãƒ«ãƒ¼ãƒ—æŠœã‘ã¦SãŒå…¥ã‚‹ã€‚
 	ClearDrawScreen();
 
 
 	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen()) {
-		fps.Update();	//XV
+		fps.Update();	//æ›´æ–°
 		//ScreenFlip();
-		fps.Wait();		//‘Ò‹@
+		fps.Wait();		//å¾…æ©Ÿ
 
 		if (!ini) {
 			addi = 0; sleep = 0; x = 0; y = 1; z = 0;
 			angleX = 0.f; angleY = 0.f;
 			t = 0;
 			
-			vx = -5.0f; vy = 10.0f; vz = 5.0;//‚Ì‚¿‚Ì‚¿‘Šè‚©‚ç‚à‚ç‚¤•”•ª‚Ìƒ‹[ƒv‚É“ü‚ê‚é•K—v‚ ‚èB
+			vx = -5.0f; vy = 10.0f; vz = 5.0;//ã®ã¡ã®ã¡ç›¸æ‰‹ã‹ã‚‰ã‚‚ã‚‰ã†éƒ¨åˆ†ã®ãƒ«ãƒ¼ãƒ—ã«å…¥ã‚Œã‚‹å¿…è¦ã‚ã‚Šã€‚
 
 		}
 
-		// w’èˆÊ’u‚Éƒ‚ƒfƒ‹‚ğ”z’u
+		// æŒ‡å®šä½ç½®ã«ãƒ¢ãƒ‡ãƒ«ã‚’é…ç½®
 		MV1SetPosition(Soccerball, VGet(x, y, z));
 		MV1SetPosition(plane, VGet(0, 10, 0));
 		MV1SetPosition(Soccerfield, VGet(1, 10.1, 1));
 		MV1SetPosition(Soccergoal, VGet(-30, 0, 0));
 
-		// ‚R‚cƒ‚ƒfƒ‹‚Ì•`‰æ
+		// ï¼“ï¼¤ãƒ¢ãƒ‡ãƒ«ã®æç”»
 		MV1DrawModel(Soccerball);
 		//MV1DrawModel(plane);
 		MV1DrawModel(Soccerfield);
@@ -182,7 +183,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			ClearDrawScreen();
 			if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 				ini = true;
-				box = 'I';													//ƒoƒCƒgŒ^‚Å‘—‚é‚à‚Ì
+				box = 'I';													//ãƒã‚¤ãƒˆå‹ã§é€ã‚‹ã‚‚ã®
 				buffer[0] = box;
 			}
 
@@ -250,42 +251,42 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~‚T");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—ï¼•");
 					break;
 				}
 				switch (g = 1)
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~‚S");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—ï¼”");
 					break;
 				}
 				switch (g = 2)
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~‚R");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—ï¼“");
 					break;
 				}
 				switch (g = 3)
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~‚Q");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—ï¼’");
 					break;
 				}
 				switch (g = 4)
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~‚P");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—ï¼‘");
 					break;
 				}
 				switch (g = 5)
 				{
 					MV1SetPosition(Soccerballx, VGet(290, 290, 0));
 					MV1DrawModel(Soccerballx);
-					DrawFormatString(300, 300, GetColor(255, 255, 255), "~0");
+					DrawFormatString(300, 300, GetColor(255, 255, 255), "Ã—0");
 					break;
 
 				}
@@ -293,19 +294,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			
 
-				// w’èˆÊ’u‚Éƒ‚ƒfƒ‹‚ğ”z’u
+				// æŒ‡å®šä½ç½®ã«ãƒ¢ãƒ‡ãƒ«ã‚’é…ç½®
 				MV1SetPosition(Soccerball, VGet(x, y, z));
 				MV1SetPosition(plane, VGet(0, 10, 0));
 				MV1SetPosition(Soccerfield, VGet(1, 10.1, 1));
 				MV1SetPosition(Soccergoal, VGet(-30, 0, 0));
 
-				// ‚R‚cƒ‚ƒfƒ‹‚Ì•`‰æ
+				// ï¼“ï¼¤ãƒ¢ãƒ‡ãƒ«ã®æç”»
 				MV1DrawModel(Soccerball);
 				//MV1DrawModel(plane);
 				MV1DrawModel(Soccerfield);
 				MV1DrawModel(Soccergoal);
 
-				DrawFormatString(240, 240, GetColor(255, 255, 255), "EscƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢");
+				DrawFormatString(240, 240, GetColor(255, 255, 255), "Escã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„");
 
 				DrawFormatString(50, 50, GetColor(255, 255, 255), "%3f.4,%3f.4,%3f.4", cx, cy, cz);
 
@@ -316,14 +317,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			
 		}
 
-		//‚±‚±‚Åƒ{[ƒ‹‚ğ‚¯‚é‘O‚É‰Á‘¬“x‚Ì‰Šú‰»
+		//ã“ã“ã§ãƒœãƒ¼ãƒ«ã‚’ã‘ã‚‹å‰ã«åŠ é€Ÿåº¦ã®åˆæœŸåŒ–
 		
 		
 		
-		if (sleep > 120) {//“ñ•b‘Ò‚Á‚Ä‚©‚ç¨fps‚ğ’è‹`‚·‚éŠÔ
+		if (sleep > 120) {//äºŒç§’å¾…ã£ã¦ã‹ã‚‰â†’fpsã‚’å®šç¾©ã™ã‚‹æ™‚é–“
 			t += 1.0f / fps.mFps;
 			
-			if (x > -28) {	//ƒS[ƒ‹‚É‚Â‚¢‚½‚ÌğŒ
+			if (x > -28) {	//ã‚´ãƒ¼ãƒ«ã«ã¤ã„ãŸæ™‚ã®æ¡ä»¶
 				x += vx * (1.0f / fps.mFps);
 				angleX -= ROTATE_SPEED;
 				if (CheckHitKey(KEY_INPUT_Z)) 
@@ -339,7 +340,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					angleY += 0.99f*ROTATE_SPEED;
 				}
 			}
-			if (y >= 1)	//’n–Ê‚æ‚è‚à‚‚¢‚ÌğŒ
+			if (y >= 1)	//åœ°é¢ã‚ˆã‚Šã‚‚é«˜ã„æ™‚ã®æ¡ä»¶
 				
 				y = vy * t - 0.2f*G*t*t + 1.0f;
 			
@@ -352,11 +353,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			if (x <= -20.4)
 			{
-				//ƒS[ƒ‹ƒ|ƒXƒg‚Ì”»’è
+				//ã‚´ãƒ¼ãƒ«ãƒã‚¹ãƒˆã®åˆ¤å®š
 				if (/*x >= -20.4 && y < 11 && z <= 10.4 && z >= 9.6 ||*/ x >= -20.4 &&x<=-20.3&& y < 11/* && z >= -10.4&&z <= -9.6 /*|| x >= -20.4 && y <11 && y>10 && -10.4 <= z <= 10.4*/)
 				{
 					x  -= vx * (1.0f / fps.mFps);;
-					DrawFormatString(50, 50, GetColor(255, 255, 255), "”½Ë");
+					DrawFormatString(50, 50, GetColor(255, 255, 255), "åå°„");
 				}
 
 				addi++;
@@ -364,7 +365,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					DrawFormatString(50, 50, GetColor(255, 255, 255), "GOAL!!!!!!!!");
 					//con = 'CON';
 					if (addi == 1) {
-						box = 'G';												//ƒoƒCƒgŒ^‚Å‘—‚é‚à‚Ì
+						box = 'G';												//ãƒã‚¤ãƒˆå‹ã§é€ã‚‹ã‚‚ã®
 						buffer[0] = box;
 					}
 
@@ -376,9 +377,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				else
 				{
-					DrawFormatString(50, 50, GetColor(255, 255, 255), "m9(^„D^)Ìß·Ş¬°");
+					DrawFormatString(50, 50, GetColor(255, 255, 255), "m9(^Ğ”^)ï¾Œï¾Ÿï½·ï¾ï½¬ï½°");
 					if (addi == 1) {
-						box = 'O';												//ƒoƒCƒgŒ^‚Å‘—‚é‚à‚Ì
+						box = 'O';												//ãƒã‚¤ãƒˆå‹ã§é€ã‚‹ã‚‚ã®
 						buffer[0] = box;
 					}
 
@@ -393,7 +394,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 
 		else {
-			sleep++;//ƒJƒEƒ“ƒg‚µ‚Ä
+			sleep++;//ã‚«ã‚¦ãƒ³ãƒˆã—ã¦
 		}
 
 			DrawFormatString(0, 0, GetColor(255, 255, 255), "x=%.1f y=%.1f z=%.1f", x, y, z);
