@@ -1,0 +1,21 @@
+﻿  dxtest.cpp
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(63): warning C4838: 'char' から 'byte' への変換には縮小変換が必要です
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(165): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(196): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(197): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(207): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(208): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(223): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(224): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(225): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(238): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(239): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(240): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(300): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(256): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(263): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(270): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(277): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(284): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(292): warning C4060: switch ステートメントに 'case' または 'default' ラベルがありません。
+  dxtest.vcxproj -> C:\Users\Angelic Angel\source\repos\dxtest\Debug\dxtest.exe
