@@ -1,16 +1,16 @@
 ﻿  dxtest.cpp
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(63): warning C4838: 'char' から 'byte' への変換には縮小変換が必要です
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(182): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(223): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(224): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(234): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(235): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(250): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(251): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(252): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(265): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(266): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(267): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(322): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(355): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  dxtest.vcxproj -> C:\Users\Angelic Angel\source\repos\dxtest\Debug\dxtest.exe
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(62): warning C4838: 'char' から 'byte' への変換には縮小変換が必要です
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(181): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(222): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(223): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(233): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(234): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(249): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(250): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(251): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(264): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(265): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(266): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(321): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\takun\source\repos\dxtest\dxtest\dxtest.cpp(354): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  dxtest.vcxproj -> C:\Users\takun\source\repos\dxtest\Debug\dxtest.exe

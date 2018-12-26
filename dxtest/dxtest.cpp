@@ -1,4 +1,3 @@
-//zyouhouzikken
 #include <DxLib.h>
 #include <math.h>
 #define PI 3.1415926f
@@ -88,13 +87,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//const char *String=0;
 	//3Dモデルの読み込み
-	int Soccerball = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer ball\\Soccer Ball Low.blend.x");
-	int plane = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\plane\\Plane.x");
-	int Soccerfield = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccer field\\Soccer Grount Base high optimised.blend.x");
-	int Soccergoal = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer goal\\goal low optimised.blend.x");
-	int Soccerman = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer man low polygon riged animeblend.mv1");
+	int Soccerball = MV1LoadModel("C:\\Users\\takun\\source\\repos\\dxtest\\Soccer ball\\Soccer Ball Low.blend.x");
+	int plane = MV1LoadModel("C:\\Users\\takun\\source\\repos\\dxtest\\plane\\Plane.x");
+	int Soccerfield = MV1LoadModel("C:\\Users\\takun\\source\\repos\\dxtest\\soccer field\\Soccer Grount Base high optimised.blend.x");
+	int Soccergoal = MV1LoadModel("C:\\Users\\takun\\source\\repos\\dxtest\\Soccer goal\\goal low optimised.blend.x");
+	int Soccerman = MV1LoadModel("C:\\Users\\takun\\source\\repos\\dxtest\\Soccer man low polygon riged animeblend.mv1");
 	//サッカーボールの画像の読み込み
-	int soccerHAndle = LoadGraph("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccerball.jpg");
+	int soccerHAndle = LoadGraph("C:\\Users\\takun\\source\\repos\\dxtest\\soccerball.jpg");
 	/*// モデルに含まれるテクスチャの総数を取得する
 	Grassllllow = MV1GetTextureNum(Soccerfield);
 
