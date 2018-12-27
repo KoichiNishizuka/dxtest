@@ -12,4 +12,6 @@ c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(240): warning C4244
 c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(241): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
 c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(242): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
 c:\users\angelic angel\source\repos\dxtest\dxtest\dxtest.cpp(303): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  LINK : 前回のインクリメンタル リンクで C:\Users\Angelic Angel\source\repos\dxtest\Debug\dxtest.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+LINK : warning LNK4098: defaultlib 'LIBCMTD' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
   dxtest.vcxproj -> C:\Users\Angelic Angel\source\repos\dxtest\Debug\dxtest.exe
