@@ -80,13 +80,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	
 	int thy = 15;
 	int thz = 15;
+
+	int AttachIndex;
+	float TotalTime, PlayTime;
+
+	BOOL kickaction = FALSE;
+
 	//const char *String=0;
 	//3Dモデルの読み込み
 	int Soccerball = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer ball\\Soccer Ball Low.blend.x");
 	int plane = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\plane\\Plane.x");
 	int Soccerfield = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccer field\\Soccer Grount Base high optimised.blend.x");
 	int Soccergoal = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer goal\\goal low optimised.blend.x");
-	
+	int Soccerman = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer man low polygon riged animeblend.mv1");
 	//サッカーボールの画像の読み込み
 	int soccerHAndle = LoadGraph("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccerball.jpg");
 	/*// モデルに含まれるテクスチャの総数を取得する
@@ -120,6 +126,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//サッカー競技場の拡大
 	MV1SetScale(Soccerfield, VGet(7.0f, 7.0f, 7.0f));
 	
+	//キッカーモデルの縮小
+	MV1SetScale(Soccerman, VGet(0.01f, 0.01f, 0.01f));
+	//キッカーモデルの回転
+	MV1SetRotationXYZ(Soccerman, VGet(0.0f,-90.0f * DX_PI_F / 180.0f, 0.0f));
 	//奥行0.1～1000までをカメラの描画範囲とする
 	SetCameraNearFar(0.01f, 100000.0f);
 
@@ -130,7 +140,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//(x,y,z)の視点から(0,10,0)のターゲットを見る角度にカメラを設置
 	SetCameraPositionAndTarget_UpVecY(VGet(cx,cy, cz), VGet(tx, 0.0f, 0.0f));
 	//SetCameraPositionAndTarget_UpVecY(VGet(0, 90, -15), VGet(0.0f, 0.0f, 0.0f));
-	//SetCameraPositionAndTarget_UpVecY(VGet(30, 20, 0), VGet(10.0f, 10.0f, 0.0f));
+	//SetCameraPositionAndTarget_UpVecY(VGet(0,1000, 0), VGet(0.0f, 0.0f, 0.0f));
 	
 	//この点でbox=S;
 	DrawFormatString(240, 300, GetColor(255, 255, 255), " Xキーを押してください");
@@ -145,6 +155,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	}
 	buffer[0] = box;				//X押したらループ抜けてSが入る。
 	ClearDrawScreen();
+	
+	AttachIndex = MV1AttachAnim(Soccerman,0,-1,FALSE);
+	TotalTime = MV1GetAttachAnimTotalTime(Soccerman, AttachIndex);
+	PlayTime = 0.0f;
 
 
 	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen()) {
@@ -156,6 +170,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			addi = 0; sleep = 0; x = 0; y = 1; z = 0;
 			angleX = 0.f; angleY = 0.f;
 			t = 0;
+			PlayTime = 0.0f;
 
 			vx = -5.0f; vy = 10.0f; vz = 5.0;//のちのち相手からもらう部分のループに入れる必要あり。
 
@@ -166,7 +181,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//MV1SetPosition(plane, VGet(0, 10, 0));
 		MV1SetPosition(Soccerfield, VGet(1, 10.1, 1));
 		MV1SetPosition(Soccergoal, VGet(-30, 0, 0));
-		
+		MV1SetPosition(Soccerman, VGet(15, 1, 0));
 
 		// ３Ｄモデルの描画
 		MV1DrawModel(Soccerball);
@@ -190,6 +205,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				z = 0; angleX = 0.f; angleY = 0.f;
 				t = 0;
 				vx = -5.0f; vy = 10.0f; vz = 5.0;
+				PlayTime = 0.0f;
+				kickaction = FALSE;
 
 				if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 					ini = true;
@@ -304,13 +321,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				MV1SetPosition(plane, VGet(0, 10, 0));
 				MV1SetPosition(Soccerfield, VGet(1, 10.1, 1));
 				MV1SetPosition(Soccergoal, VGet(-30, 0, 0));
-				
+				MV1SetPosition(Soccerman, VGet(15, 1, 0));
 				// ３Ｄモデルの描画
 				MV1DrawModel(Soccerball);
 				//MV1DrawModel(plane);
 				MV1DrawModel(Soccerfield);
 				MV1DrawModel(Soccergoal);
-				
+				MV1SetAttachAnimTime(Soccerman, AttachIndex, PlayTime);
+				MV1DrawFrame(Soccerman,127);
 				DrawFormatString(240, 300, GetColor(255, 255, 255), "Escキーを押してください");
 
 				DrawFormatString(50, 50, GetColor(255, 255, 255), "%3f.4,%3f.4,%3f.4", cx, cy, cz);
@@ -336,19 +354,30 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				//MV1SetPosition(plane, VGet(0, 10, 0));
 				MV1SetPosition(Soccerfield, VGet(1, 10.1, 1));
 				MV1SetPosition(Soccergoal, VGet(-30, 0, 0));
-
+				MV1SetPosition(Soccerman, VGet(15, 1, 0));
+				if (PlayTime <= TotalTime)
+				{
+					//PlayTime += (1.0f / fps.mFps) * 30;
+					PlayTime += (1.0f / 60.0f) * 30;
+					if (PlayTime >= TotalTime-10.0f)
+					{
+						//PlayTime = 0.0f;
+						kickaction = TRUE;
+					}
+					MV1SetAttachAnimTime(Soccerman, AttachIndex, PlayTime);
+				}
 				// ３Ｄモデルの描画
 				MV1DrawModel(Soccerball);
 				//MV1DrawModel(plane);
 				MV1DrawModel(Soccerfield);
 				MV1DrawModel(Soccergoal);
-				
+				MV1DrawFrame(Soccerman, 127);
 
 				MV1SetRotationXYZ(Soccerball, VGet(angleX, angleY, 0.0f));
 				
-				if (sleep > 120) {//二秒待ってから→fpsを定義する時間
-					t += 1.0f / fps.mFps;
-
+				if (kickaction) {//二秒待ってから→fpsを定義する時間
+					//t += 1.0f / fps.mFps;
+					t += 1.0f / 60.0f;
 					if (x > -28) {	//ゴールについた時の条件
 						x += vx * (1.0f / fps.mFps);
 						angleX -= ROTATE_SPEED;
