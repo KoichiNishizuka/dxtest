@@ -56,8 +56,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Fps fps;
 	float vx = -5.0f, vy = 10.0f,vz= -5.0f, t = 0.0f;
 	float x = 0, y = 1, z = 0, angle = 0, speed = 1;
-	//int i, Grassllllow=0;
-	//int Width, Height, GrHandle=0;
+	int i, Grassllllow=0;
+	int Width, Height, GrHandle=0;
 	 
 	char box='S';
 	byte buffer[] = { box };
@@ -93,6 +93,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int Soccerfield = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccer field\\Soccer Grount Base high optimised.blend.x");
 	int Soccergoal = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer goal\\goal low optimised.blend.x");
 	int Soccerman = MV1LoadModel("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\Soccer man low polygon riged animeblend.mv1");
+	
 	//サッカーボールの画像の読み込み
 	int soccerHAndle = LoadGraph("C:\\Users\\Angelic Angel\\source\\repos\\dxtest\\soccerball.jpg");
 	/*// モデルに含まれるテクスチャの総数を取得する
@@ -110,7 +111,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		
 		// テクスチャの大きさを描画する
 		GetGraphSize(GrHandle, &Width, &Height);
-		DrawFormatString(0, 1, GetColor(255, 255, 255), "          %dx%d", Width, Height);
+		
 
 		
 	}
@@ -133,10 +134,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//奥行0.1～1000までをカメラの描画範囲とする
 	SetCameraNearFar(0.01f, 100000.0f);
 
-	/*while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen())
-	{
-         
-	}*/
+	
 	//(x,y,z)の視点から(0,10,0)のターゲットを見る角度にカメラを設置
 	SetCameraPositionAndTarget_UpVecY(VGet(cx,cy, cz), VGet(tx, 0.0f, 0.0f));
 	//SetCameraPositionAndTarget_UpVecY(VGet(0, 90, -15), VGet(0.0f, 0.0f, 0.0f));
@@ -166,7 +164,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//ScreenFlip();
 		fps.Wait();		//待機
 
-		if (!ini) {
+		if (!ini) 
+		{
 			addi = 0; sleep = 0; x = 0; y = 1; z = 0;
 			angleX = 0.f; angleY = 0.f;
 			t = 0;
@@ -272,45 +271,39 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					}
 				}
 
-
+				//ボールの残機表示
 				switch (g)
 				{
 				case 0:
 
 					DrawFormatString(600, 20, GetColor(0, 0, 255), "×5");
-					//ScreenFlip();
+					
 					break;
 
 
 				case 1:
 
 					DrawFormatString(600, 20, GetColor(0, 0, 255), "×4");
-					//ScreenFlip();
+					
 					break;
 
 				case 2:
 
 					DrawFormatString(600, 20, GetColor(0, 0, 255), "×3");
-					//ScreenFlip();
+					
 					break;
-
 
 				case 3:
 
 					DrawFormatString(600, 20, GetColor(0, 0, 255), "×2");
-					//ScreenFlip();
+					
 					break;
-
 
 				case 4:
 
 					DrawFormatString(600, 20, GetColor(0, 0, 255), "×1");
-					//ScreenFlip();
-					break;
-
-
 				
-
+					break;
 				}
 				
 				
@@ -334,7 +327,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				DrawFormatString(50, 50, GetColor(255, 255, 255), "%3f.4,%3f.4,%3f.4", cx, cy, cz);
 
 				SetCameraPositionAndTarget_UpVecY(VGet(cx, cy, cz), VGet(tx, 0.0f, 0.0f));
-				DrawExtendGraph(590, 20, 590 - 50, 20 + 50, soccerHAndle, FALSE);
+				//サッカーボール残機表示
+				DrawExtendGraph(590, 20, 590 - 20, 20 + 20, soccerHAndle, FALSE);
 				ScreenFlip();
 				Sleep(100);
 
@@ -445,7 +439,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								sleep = 0;
 							}
 						}
-
 
 
 					}
